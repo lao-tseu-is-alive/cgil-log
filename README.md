@@ -52,7 +52,7 @@ will give you at the console (with different colors):
 <br><br>
 </body>
 
-![alt text](https://github.com/lao-tseu-is-alive/cgil-log/blob/master/examples/cgLogScreenshot.png "output example")
+![alt text](https://raw.githubusercontent.com/lao-tseu-is-alive/cgil-log/master/examples/cgLogScreenshot.png "output example")
 
 
 If you work with webpack 2, you can also import the ES2016 javascript source
