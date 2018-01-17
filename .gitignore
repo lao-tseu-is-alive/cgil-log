@@ -56,4 +56,5 @@ typings/
 
 # dotenv environment variables file
 .env
-
+# don't put webpack build files in github
+dist

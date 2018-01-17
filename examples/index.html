@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>cgHtmlUtils</title>
+    <!-- Bootstrap Latest CDN compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <script src="../dist/cgLog.min.js"></script>
+    <style>
+        .linfo {
+            background: #b3e5fc;
+            color: #000
+        }
+
+        .ltrace {
+            background: #c8e6c9;
+            color: #37474f
+        }
+
+        .lwarn {
+            background: #ff9800;
+            color: #020202
+        }
+
+        .lerr {
+            background: #FF2325;
+            color: #BFFF1A
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>cgLog examples</h2>
+        <p class="lead">This is goeland client side log class example page</p>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Class cgLog('myModuleName',logLevel) allows to log to console with colours </h3>
+            </div>
+            <div class="panel-body">
+                <p>Based on the value of logLevel [0-4] your messages will appear or not.                 
+                </p>
+                <ol start="0">
+                    <li>none</li>
+                    <li>error</li>
+                    <li>warning</li>
+                    <li>trace</li>
+                    <li>info</li>
+                </ol>
+                
+                <code>const log = new cgLog.('myModule',4) <br>           
+                    let myVar = 'a nice string'<br>
+                    let myObj = {key: 1, msg: 'hello world !'}<br>
+                    <br>
+                    log.l('my log message', myVar)<br>
+                    log.w('my warning message', myObj)<br>
+                    log.e('my error message', myObj)<br>
+                    log.t('my trace message')<br>
+                </code>
+                <br>
+                <p>will give you at the console : </p>
+                <span class="linfo">myModule:: my log message</span>
+                <br> a nice string
+                <br>
+                <span class="lwarn">myModule:: my warning message</span>
+                <br> {key: 1, msg: "hello world !"}
+                <br>
+                <span class="lerr">myModule:: my error message</span>
+                <br> {key: 1, msg: "hello world !"}
+                <br>
+                <span class="ltrace">myModule:: my trace message</span>
+                <br>
+                <br>
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">        
+        const log = new cgLog('myModule', 4)
+        let myVar = 'a nice string'
+        let myObj = { key: 1, msg: 'hello world !' }
+
+        log.l('my log message', myVar)
+        log.w('my warning message', myObj)
+        log.e('my error message', myObj)
+        log.t('my trace message')
+
+
+    </script>
+</body>
+
+</html>
