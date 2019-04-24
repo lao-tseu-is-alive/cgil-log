@@ -19,13 +19,14 @@ module.exports = {
     rules: [
       {
         test: /\.(js)$/,
-        use: 'babel-loader'
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       }
     ]
   },
   plugins: [
-    // to disable minification comment next line
-    new webpack.optimize.UglifyJsPlugin(),
     new WebpackOnBuildPlugin(function (stats) {
       const newlyCreatedAssets = stats.compilation.assets;
       const buidPath = path.resolve(__dirname, buildDirName) + '/';
