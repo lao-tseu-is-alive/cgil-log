@@ -1,6 +1,6 @@
 {
   "name": "cgil-log",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "goeland client side log class",
   "main": "dist/cgLog.min.js",
   "scripts": {

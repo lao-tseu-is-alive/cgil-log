@@ -26,6 +26,7 @@ const _getCallerName = function (stackTrace) {
     callerName = callerName.replace(/ \(.+\)$/, ''); // Sanitize Chrome
     callerName = callerName.replace(/\@.+/, ''); // Sanitize Firefox
     callerName = callerName.replace('at ', '').trim()
+    callerName = callerName.replace('VueComponent.', '').trim()
     return callerName
   } else {
     return ''
@@ -34,9 +35,9 @@ const _getCallerName = function (stackTrace) {
 const _log = function (moduleName, callerName, msg, logtype, ...args) {
   let prefix = ''
   if (callerName.length > 1) {
-    prefix = `${moduleName}::${callerName}() ${msg}`
+    prefix = `${moduleName}::${callerName}()`
   } else {
-    prefix = `${moduleName}::${msg}`
+    prefix = `${moduleName}::`
   }
   switch (logtype) {
     case logtype.lerr:
