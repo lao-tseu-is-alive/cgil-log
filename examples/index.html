@@ -92,10 +92,10 @@
         let myVar = 'a nice string content'
         let myObj = { key: 1, msg: 'hello world !' }
 
-        log.t('my log message outside any function')
         log.l('my log message outside any function', myVar)
         log.w('my warning message outside any function', myObj)
         log.e('my error message outside any function', myObj)
+        log.t('my trace message outside any function')
 
       myNiceFunction(myVar)
 
