@@ -15,8 +15,41 @@ const logType = {
   lwarn: 'background: #ff9800; color: #020202',
   lerr: 'background: #FF2325; color: #BFFF1A'
 }
-const _log = function (msg, logtype, ...args) {
-  console.log(`%c ${msg}`, logtype)
+
+const _isNullOrUndefined = (variable) => ((typeof (variable) === 'undefined') || (variable === null))
+
+const _getCallerName = function (stackTrace) {
+  if (!_isNullOrUndefined(stackTrace)) {
+    let callerName = stackTrace.replace(/^Error\s+/, ''); // Sanitize Chrome
+    callerName = callerName.split("\n")[1]; // 1st item is this, 2nd item is caller
+    callerName = callerName.replace(/^\s+at Object./, ''); // Sanitize Chrome
+    callerName = callerName.replace(/ \(.+\)$/, ''); // Sanitize Chrome
+    callerName = callerName.replace(/\@.+/, ''); // Sanitize Firefox
+    callerName = callerName.replace('at ', '').trim()
+    return callerName
+  } else {
+    return ''
+  }
+}
+const _log = function (moduleName, callerName, msg, logtype, ...args) {
+  let prefix = ''
+  if (callerName.length > 1) {
+    prefix = `${moduleName}::${callerName}() ${msg}`
+  } else {
+    prefix = `${moduleName}::${msg}`
+  }
+  switch (logtype) {
+    case logtype.lerr:
+      console.error(`%c ${prefix} ${msg}`, logtype)
+      console.trace()
+      break
+    case logtype.lwarn:
+      console.warn(`%c ${prefix} ${msg}`, logtype)
+      break
+    default:
+      console.log(`%c ${prefix} ${msg}`, logtype)
+      break
+  }
   if (args.length > 0) {
     args.map((v) => console.log(v))
   }
@@ -29,22 +62,29 @@ export default class cgLog {
 
   l(msg, ...args) {
     if (this._logLevel >= logLevel.info) {
-      _log(`${this._moduleName}:: ${msg}`, logType.linfo, ...args)
+      const callerName = _getCallerName(new Error().stack); // Only tested in latest FF and Chrome
+      _log(this._moduleName, callerName, msg, logType.linfo, ...args)
     }
   }
+
   t(msg, ...args) {
     if (this._logLevel >= logLevel.trace) {
-      _log(`${this._moduleName}:: ${msg}`, logType.ltrace, ...args)
+      const callerName = _getCallerName(new Error().stack); // Only tested in latest FF and Chrome
+      _log(this._moduleName, callerName, msg, logType.ltrace, ...args)
     }
   }
+
   w(msg, ...args) {
     if (this._logLevel >= logLevel.warn) {
-      _log(`${this._moduleName}:: ${msg}`, logType.lwarn, ...args)
+      const callerName = _getCallerName(new Error().stack); // Only tested in latest FF and Chrome
+      _log(this._moduleName, callerName, msg, logType.lwarn, ...args)
     }
   }
+
   e(msg, ...args) {
     if (this._logLevel >= logLevel.err) {
-      _log(`${this._moduleName}:: ${msg}`, logType.lerr, ...args)
+      const callerName = _getCallerName(new Error().stack); // Only tested in latest FF and Chrome
+      _log(this._moduleName, callerName, msg, logType.lerr, ...args)
     }
   }
 }

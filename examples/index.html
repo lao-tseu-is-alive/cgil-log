@@ -44,7 +44,7 @@
                 <h3 class="panel-title">Class cgLog('myModuleName',logLevel) allows to log to console with colours </h3>
             </div>
             <div class="panel-body">
-                <p>Based on the value of logLevel [0-4] your messages will appear or not.                 
+                <p>Based on the value of logLevel [0-4] your messages will appear or not.
                 </p>
                 <ol start="0">
                     <li>none</li>
@@ -53,8 +53,8 @@
                     <li>trace</li>
                     <li>info</li>
                 </ol>
-                
-                <code>const log = new cgLog.('myModule',4) <br>           
+
+                <code>const log = new cgLog.('myModule',4) <br>
                     let myVar = 'a nice string'<br>
                     let myObj = {key: 1, msg: 'hello world !'}<br>
                     <br>
@@ -77,19 +77,27 @@
                 <span class="ltrace">myModule:: my trace message</span>
                 <br>
                 <br>
-                
+
             </div>
         </div>
     </div>
-    <script type="text/javascript">        
+    <script type="text/javascript">
+      function myNiceFunction(v){
+        log.t('Entering in my function with parameter v:', v)
+        log.l('my log message inside my function ', v)
+        log.w('my warning message in my function', v)
+        log.e('my error message in my function', v)
+      }
         const log = new cgLog('myModule', 4)
-        let myVar = 'a nice string'
+        let myVar = 'a nice string content'
         let myObj = { key: 1, msg: 'hello world !' }
 
-        log.l('my log message', myVar)
-        log.w('my warning message', myObj)
-        log.e('my error message', myObj)
-        log.t('my trace message')
+        log.t('my log message outside any function')
+        log.l('my log message outside any function', myVar)
+        log.w('my warning message outside any function', myObj)
+        log.e('my error message outside any function', myObj)
+
+      myNiceFunction(myVar)
 
 
     </script>
