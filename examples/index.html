@@ -11,7 +11,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
-    <script src="../dist/cgLog.min.js"></script>
+    <script src="../dist/cgLog.umd.js"></script>
     <style>
         .linfo {
             background: #b3e5fc;
@@ -41,7 +41,7 @@
         <p class="lead">This is goeland client side log class example page</p>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Class cgLog('myModuleName',logLevel) allows to log to console with colours </h3>
+                <h3 class="panel-title">Class Log('myModuleName',logLevel) allows to log to console with colours </h3>
             </div>
             <div class="panel-body">
                 <p>Based on the value of logLevel [0-4] your messages will appear or not.
@@ -54,7 +54,7 @@
                     <li>info</li>
                 </ol>
 
-                <code>const log = new cgLog.('myModule',4) <br>
+                <code>const log = new cgLog.Log('myModule', cgLog.levelLog.info)<br>
                     let myVar = 'a nice string'<br>
                     let myObj = {key: 1, msg: 'hello world !'}<br>
                     <br>
@@ -88,7 +88,7 @@
         log.w('my warning message in my function', v)
         log.e('my error message in my function', v)
       }
-        const log = new cgLog('myModule', 4)
+        const log = new cgLog.Log('myModule', cgLog.levelLog.info)
         let myVar = 'a nice string content'
         let myObj = { key: 1, msg: 'hello world !' }
 

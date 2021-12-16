@@ -1,7 +1,7 @@
 # cgil-log
 Goeland client side colourful log class (only 8K and no dependencies)
 
-*NEW in version >2.0.1 you get the name of caller function for free*
+*since version >2.0.1 you get the name of caller function for free*
 
 ## Getting Started
 
@@ -13,8 +13,8 @@ npm install cgil-log --save
 Then to import the class  from the library just use this line in your code
 
 ```javascript
-import cgLog from 'cgil-log'
-const log = new cgLog('myModule', logLevel)
+import Log from 'cgil-log'
+const log = new Log('myModule', logLevel)
 ```
 Based on the value of logLevel [0-4] your messages will appear or not.                 
 

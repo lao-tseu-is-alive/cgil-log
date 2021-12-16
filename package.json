@@ -1,12 +1,21 @@
 {
   "name": "cgil-log",
-  "version": "2.0.2",
-  "description": "goeland client side log class",
-  "main": "dist/cgLog.min.js",
+  "version": "3.0.0",
+  "description": "Goeland client side log class (now with TypeScript)",
+  "main": "dist/cgLog.cjs.js",
+  "module": "dist/cgLog.esm.js",
+  "browser": "dist/cgLog.umd.js",
+  "types": "dist/cgLog.d.ts",
+  "files": [
+    "/dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "dev": "webpack  --mode development",
-    "build": "webpack  --mode production",
-    "test": "jest",
+    "clean": "rm -rf dist/*",
+    "dev": "rollup -c -w",
+    "prebuild": "npm run clean",
+    "build": "rollup -c",
     "examples": "python -m SimpleHTTPServer"
   },
   "repository": {
@@ -16,31 +25,21 @@
   "keywords": [
     "goeland",
     "javascript",
-    "log"
+    "log",
+    "dev"
   ],
-  "author": "CGil",
+  "author": "lao.tseu.is.alive@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lao-tseu-is-alive/cgil-log/issues"
   },
   "homepage": "https://github.com/lao-tseu-is-alive/cgil-log#readme",
-  "jest": {
-    "verbose": true,
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/src/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ]
-  },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-loader": "^8.1.0",
-    "jest": "^25.3.0",
-    "on-build-webpack": "^0.1.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {}
+    "rollup": "^2.61.1",
+    "rollup-plugin-dts": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4"
+  }
 }
