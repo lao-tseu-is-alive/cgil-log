@@ -1,22 +1,24 @@
 # cgil-log
-Goeland client side colourful log class (only 8K and no dependencies)
+Goeland client side colourful Log class (less then 3Kb and no dependencies)
+
+* version 3 was rewritten in TypeScript and bundled with [Rollup.Js](https://rollupjs.org/guide/en/#quick-start) *
 
 *since version >2.0.1 you get the name of caller function for free*
 
-## Getting Started
+### Getting Started
 
-Install `cgil-log` in the shell
+Install `cgil-log` in your favorite shell :
 
 ```bash
-npm install cgil-log --save
+npm i -P cgil-log
 ```
-Then to import the class  from the library just use this line in your code
+Then to import the class library just use this line in your code
 
 ```javascript
-import Log from 'cgil-log'
+import { Log } from 'cgil-log'
 const log = new Log('myModule', logLevel)
 ```
-Based on the value of logLevel [0-4] your messages will appear or not.                 
+Based on the value of the enum logLevel [0-4] your messages will appear or not.                 
 
 0 : none --> no log will be done, typically for a build in production
 1. : error --> only errors will appear log.e('my error msg)
@@ -24,10 +26,33 @@ Based on the value of logLevel [0-4] your messages will appear or not.
 3. : trace 
 4. : info --> all logs type will appear
 
+Just in case you wonder the levelLog enum is exported and is also available in the type definition file :  cgLog.d.ts
+```typescript
+export enum levelLog {
+    none,   // = 0
+    err,    // = 1
+    warn,   // = 2
+    trace,  // = 3
+    info,   // = 4
+}
+```
 
-and use any function as usual, webpack will usually do the work
+### How to use in the browser
+
+Inside the browser you need to include the minified umd version (2.6Ko only).
+The library is exposed via the cgLog 'namespace'.
+
+You can have a look in the examples directory. 
+
+Basically it's just a classical script :
+```html
+<script src="../dist/cgLog.umd.js"></script>
+```
+
+Then in your javascript code 
 
 ```javascript
+const log = new cgLog.Log('myModule', cgLog.levelLog.info)
 const log = new cgLog('myModule', 4)
 function myNiceFunction(v) {
   log.t('Entering in my function with parameter v:', v)
@@ -81,13 +106,3 @@ will give you at the console (with different colors):
 
 ![alt text](https://raw.githubusercontent.com/lao-tseu-is-alive/cgil-log/master/examples/cgLogScreenshot.png "output example")
 
-
-If you work with webpack, you can also import the ES2016 javascript source
-
-```javascript
-import cgLog from 'cgil-log/src/cgLog'
-```
-this way webpack will be able to do tree-shaking getting only the functions you are using, 
-and your final bundle will be much smaller !
-
-https://webpack.js.org/guides/tree-shaking/

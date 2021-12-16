@@ -6,6 +6,7 @@ import dts from 'rollup-plugin-dts';
 import {terser} from 'rollup-plugin-terser';
 /* to get more information on Rollup.js Bundler  check :
  https://rollupjs.org/guide/en/#quick-start
+ https://github.com/rollup/rollup-starter-lib
  https://github.com/rollup/rollup-starter-lib/tree/typescript
  https://www.sitepoint.com/rollup-javascript-bundler-introduction/
  */

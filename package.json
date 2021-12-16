@@ -1,6 +1,6 @@
 {
   "name": "cgil-log",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Goeland client side log class (now with TypeScript)",
   "main": "dist/cgLog.cjs.js",
   "module": "dist/cgLog.esm.js",
@@ -8,6 +8,7 @@
   "types": "dist/cgLog.d.ts",
   "files": [
     "/dist",
+    "/examples",
     "README.md",
     "LICENSE"
   ],
