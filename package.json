@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/lao-tseu-is-alive/cgil-log#readme",
   "devDependencies": {
-    "rollup": "^2.61.1",
+    "rollup": "^3.29.5",
     "rollup-plugin-dts": "^4.0.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
