@@ -1,11 +1,11 @@
 {
   "name": "cgil-log",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Goeland client side log class (now with TypeScript)",
   "main": "dist/cgLog.cjs.js",
   "module": "dist/cgLog.esm.js",
   "browser": "dist/cgLog.umd.js",
-  "types": "dist/cgLog.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "/dist",
     "/examples",
@@ -14,10 +14,10 @@
   ],
   "scripts": {
     "clean": "rm -rf dist/*",
-    "dev": "rollup -c -w",
-    "prebuild": "npm run clean",
-    "build": "rollup -c",
-    "examples": "python -m SimpleHTTPServer"
+    "build": "bun run build.ts && tsc",
+    "dev": "bun run --watch build.ts",
+    "examples": "python -m http.server",
+    "prebuild": "npm run clean"
   },
   "repository": {
     "type": "git",
@@ -36,11 +36,7 @@
   },
   "homepage": "https://github.com/lao-tseu-is-alive/cgil-log#readme",
   "devDependencies": {
-    "rollup": "^2.61.1",
-    "rollup-plugin-dts": "^4.0.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript": "^1.0.1",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "@types/bun": "^1.3.10",
+    "typescript": "^5.9.3"
   }
 }

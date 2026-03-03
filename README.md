@@ -1,9 +1,8 @@
 # cgil-log
 Goeland client side colourful Log class (less then 3Kb and no dependencies)
 
-* version 3 was rewritten in TypeScript and bundled with [Rollup.Js](https://rollupjs.org/guide/en/#quick-start) *
+* version 3 was rewritten in TypeScript and bundled with [bun](https://bun.com/docs) 
 
-*since version >2.0.1 you get the name of caller function for free*
 
 ### Getting Started
 
@@ -53,7 +52,6 @@ Then in your javascript code
 
 ```javascript
 const log = new cgLog.Log('myModule', cgLog.levelLog.info)
-const log = new cgLog('myModule', 4)
 function myNiceFunction(v) {
   log.t('Entering in my function with parameter v:', v)
   log.l('my log message inside my function ', v)
@@ -106,3 +104,8 @@ will give you at the console (with different colors):
 
 ![alt text](https://raw.githubusercontent.com/lao-tseu-is-alive/cgil-log/master/examples/cgLogScreenshot.png "output example")
 
+
+### HOW TO BUILD 
+
+  
+  bun run build
