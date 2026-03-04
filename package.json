@@ -1,7 +1,8 @@
 {
   "name": "cgil-log",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Goeland client side log class (now with TypeScript)",
+  "type": "module",
   "main": "dist/cgLog.cjs.js",
   "module": "dist/cgLog.esm.js",
   "browser": "dist/cgLog.umd.js",
@@ -12,6 +13,14 @@
     "README.md",
     "LICENSE"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/cgLog.esm.js",
+      "require": "./dist/cgLog.cjs.js",
+      "default": "./dist/cgLog.esm.js"
+    }
+  },
   "scripts": {
     "clean": "rm -rf dist/*",
     "build": "bun run build.ts && tsc",
